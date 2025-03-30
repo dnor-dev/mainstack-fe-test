@@ -3,7 +3,7 @@ import { FC } from "react";
 const Home: FC = () => {
   return (
     <div>
-      <p>Hello world</p>
+      <p>Ledger Balance</p>
     </div>
   );
 };

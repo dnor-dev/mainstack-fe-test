@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { PropsWithChildren, FC } from "react";
+import Navbar from "../core/navbar";
+import { VStack } from "../ui/stack";
 
 const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -8,9 +10,12 @@ const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
-      className="flex flex-col h-screen w-full no-scrollbar"
+      className="flex flex-col p-5 h-screen w-full no-scrollbar"
     >
-      {children}
+      <VStack className="w-full h-full">
+        <Navbar />
+        {children}
+      </VStack>
     </motion.div>
   );
 };

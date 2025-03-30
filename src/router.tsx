@@ -5,6 +5,7 @@ import ErrorBoundary from "./components/error-boundary";
 import DashboardLayout from "./components/layouts/dashboard-layout";
 
 const Home = lazy(() => import("./components/pages/home"));
+const NotFound = lazy(() => import("./components/pages/not-found"));
 
 interface RouteConfig {
   path: string;
@@ -15,6 +16,7 @@ interface RouteConfig {
 
 const routes: RouteConfig[] = [
   { path: "/", page: Home, layout: DashboardLayout },
+  { path: "/*", page: NotFound, layout: DashboardLayout },
 ];
 
 export const router = createBrowserRouter(

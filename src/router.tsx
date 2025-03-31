@@ -6,6 +6,7 @@ import DashboardLayout from "./components/layouts/dashboard-layout";
 
 const Home = lazy(() => import("./components/pages/home"));
 const NotFound = lazy(() => import("./components/pages/not-found"));
+const Revenue = lazy(() => import("./components/pages/revenue"));
 
 interface RouteConfig {
   path: string;
@@ -17,6 +18,7 @@ interface RouteConfig {
 const routes: RouteConfig[] = [
   { path: "/", page: Home, layout: DashboardLayout },
   { path: "/*", page: NotFound, layout: DashboardLayout },
+  { path: "/revenue", page: Revenue, layout: DashboardLayout },
 ];
 
 export const router = createBrowserRouter(

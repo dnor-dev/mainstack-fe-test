@@ -68,7 +68,7 @@ const Navbar = () => {
             height={36}
           />
 
-          <HStack className="items-center space-x-5">
+          <HStack className="items-center space-x-5 relative -right-10">
             {navs.map((nav, index) => {
               const isActive = location.pathname === nav.path;
               return (
@@ -108,7 +108,7 @@ const Navbar = () => {
             >
               <img src={ChatIcon} alt="Chat" width={20} height={20} />
             </Button>
-            <HStack className="bg-[#EFF1F6] px-1 h[41px] items-center justify-center rounded-[100px]">
+            <HStack className="bg-[#EFF1F6] px-[3px] h[40px] items-center justify-center rounded-[100px]">
               <Avatar className="rounded-full w-[32px] h-[32px]">
                 <AvatarFallback
                   className="text-white"

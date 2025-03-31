@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { PropsWithChildren, FC } from "react";
 import Navbar from "../core/navbar";
 import { VStack } from "../ui/stack";
+import AppBar from "../ui/app-bar";
 
 const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -14,6 +15,7 @@ const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
     >
       <VStack className="w-full h-full">
         <Navbar />
+        <AppBar />
         {children}
       </VStack>
     </motion.div>

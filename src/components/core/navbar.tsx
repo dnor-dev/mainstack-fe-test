@@ -12,9 +12,12 @@ import { Link, useLocation } from "react-router-dom";
 import { Banknote, Home } from "lucide-react";
 import { Button } from "../ui/button";
 import { Avatar, AvatarFallback } from "../ui/avatar";
+import { useDisclosure } from "@/lib/hooks/useDisclosure";
+import ProfileMenu from "./profile-menu";
 
 const Navbar = () => {
   const location = useLocation();
+  const openProfileMenu = useDisclosure();
 
   const navs = [
     {
@@ -120,12 +123,19 @@ const Navbar = () => {
                   OJ
                 </AvatarFallback>
               </Avatar>
-              <Button
-                size="icon"
-                className="rounded-full bg-inherit hover:bg-inherit cursor-pointer shadow-none"
-              >
-                <img src={MenuIcon} alt="Menu" width={20} height={20} />
-              </Button>
+              <div className="relative">
+                <Button
+                  size="icon"
+                  className="rounded-full bg-inherit hover:bg-inherit cursor-pointer shadow-none"
+                  onClick={openProfileMenu.onOpen}
+                >
+                  <img src={MenuIcon} alt="Menu" width={20} height={20} />
+                </Button>
+                <ProfileMenu
+                  open={openProfileMenu.open}
+                  onClose={openProfileMenu.onClose}
+                />
+              </div>
             </HStack>
           </HStack>
         </HStack>

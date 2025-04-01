@@ -3,11 +3,12 @@ import { VStack, HStack } from "../../ui/stack";
 import { Button } from "@/components/ui/button";
 import TransStats from "@/components/ui/trans-stats";
 import RevenueChart from "@/components/ui/revenue-chart";
+import Transactions from "@/components/ui/transactions";
 
 const Revenue: FC = () => {
   return (
-    <VStack className="container mx-auto mt-16">
-      <HStack className="space-x-20 justify-center">
+    <VStack className="container mx-auto mt-16 space-y-14">
+      <HStack className="justify-between">
         <VStack className="h-[400px]">
           <HStack className="space-x-16 items-end">
             <VStack className="space-y-4">
@@ -27,14 +28,15 @@ const Revenue: FC = () => {
             <RevenueChart />
           </div>
         </VStack>
-
-        <VStack className="space-y-10 h-[400px] pl-32">
+        <VStack className="space-y-10 h-[400px]">
           <TransStats label="Ledger Balance" value={0} />
           <TransStats label="Total Payout" value={55080} />
           <TransStats label="Total Revenue" value={175580} />
           <TransStats label="Pending Payout" value={0} />
         </VStack>
       </HStack>
+
+      <Transactions />
     </VStack>
   );
 };

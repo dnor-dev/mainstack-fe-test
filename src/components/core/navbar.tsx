@@ -58,7 +58,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header>
+    <header className="sticky z-50 w-full h-full bg-white top-0">
       <nav>
         <HStack className="items-center justify-between rounded-[100px] border-2 border-white p-3 pl-5 bg-inherit shadow-sm">
           <img

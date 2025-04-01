@@ -1,4 +1,4 @@
-import { VStack } from "./stack";
+import { VStack } from "../ui/stack";
 import AppbarIcon1 from "../../assets/images/app-bar-icon-1.svg";
 import AppbarIcon2 from "../../assets/images/app-bar-icon-2.svg";
 import AppbarIcon3 from "../../assets/images/app-bar-icon-3.svg";

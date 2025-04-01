@@ -173,3 +173,38 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Customized container class */
+.container {
+  width: 100%;
+  max-width: 1280px; /* Default max width */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* Default padding */
+  padding-right: 1rem;
+}
+
+/* Tablets and small desktops */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+/* Large mobile screens */
+@media (max-width: 768px) {
+  .container {
+    max-width: 720px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}

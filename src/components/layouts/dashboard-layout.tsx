@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { PropsWithChildren, FC } from "react";
 import Navbar from "../core/navbar";
 import { VStack } from "../ui/stack";
-import AppBar from "../ui/app-bar";
+import AppBar from "../core/app-bar";
 
 const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
   return (

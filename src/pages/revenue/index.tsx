@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { VStack, HStack } from "../../ui/stack";
+import { VStack, HStack } from "../../components/ui/stack";
 import { Button } from "@/components/ui/button";
 import TransStats from "@/components/ui/trans-stats";
 import RevenueChart from "@/components/ui/revenue-chart";

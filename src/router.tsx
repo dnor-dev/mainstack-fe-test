@@ -4,9 +4,9 @@ import PageLoader from "./components/ui/page-loader";
 import ErrorBoundary from "./components/error-boundary";
 import DashboardLayout from "./components/layouts/dashboard-layout";
 
-const Home = lazy(() => import("./components/pages/home"));
-const NotFound = lazy(() => import("./components/pages/not-found"));
-const Revenue = lazy(() => import("./components/pages/revenue"));
+const Home = lazy(() => import("./pages/home"));
+const NotFound = lazy(() => import("./pages/not-found"));
+const Revenue = lazy(() => import("./pages/revenue"));
 
 interface RouteConfig {
   path: string;

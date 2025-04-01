@@ -3,8 +3,12 @@ import { Button } from "../button";
 import { ArrowDownToLine, ChevronDown } from "lucide-react";
 import DebitTransaction from "./debit";
 import CreditTransaction from "./credit";
+import { useDisclosure } from "@/lib/hooks/useDisclosure";
+import Filter from "@/components/drawer/filter";
 
 const Transactions = () => {
+  const { onOpen, onClose, open } = useDisclosure();
+
   return (
     <VStack className="w-full space-y-8 pb-10">
       <HStack className="w-full items-center justify-between">
@@ -15,7 +19,10 @@ const Transactions = () => {
           </p>
         </VStack>
         <HStack className="space-x-3">
-          <Button className="bg-[#EFF1F6] rounded-[100px] text-primary font-semibold !p-6">
+          <Button
+            className="bg-[#EFF1F6] rounded-[100px] text-primary font-semibold !p-6"
+            onClick={onOpen}
+          >
             Filter <ChevronDown />
           </Button>
           <Button className="bg-[#EFF1F6] rounded-[100px] text-primary font-semibold !p-6">
@@ -32,6 +39,8 @@ const Transactions = () => {
           <CreditTransaction key={index} />
         ))}
       </VStack>
+
+      <Filter open={open} onClose={onClose} />
     </VStack>
   );
 };

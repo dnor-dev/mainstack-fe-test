@@ -8,7 +8,7 @@ const CreditTransaction = () => {
         <HStack className="bg-[#E3FCF2] w-[48px] h-[48px] rounded-full items-center justify-center">
           <img src={CreditIcon} alt="credit" />
         </HStack>
-        <VStack className="space-y-1">
+        <VStack className="space-y-1.5">
           <h5 className="text-primary font-medium">Psychology of Money</h5>
           <p className="font-medium text-sm">Roy Cash</p>
         </VStack>

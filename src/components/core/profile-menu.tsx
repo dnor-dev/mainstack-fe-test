@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { VStack } from "../ui/stack";
 import { Avatar, AvatarFallback } from "../ui/avatar";
+import { useUser } from "@/lib/hooks/useUser";
 
 type Props = {
   open: boolean;
@@ -19,6 +20,8 @@ type Props = {
 
 export default function ProfileMenu({ open, onClose }: Props) {
   const menuRef = useRef<HTMLDivElement | null>(null);
+
+  const { user } = useUser();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -51,14 +54,14 @@ export default function ProfileMenu({ open, onClose }: Props) {
                       "linear-gradient(to bottom right, #5C6670 20%, #131316 70%)",
                   }}
                 >
-                  OJ
+                  {user?.first_name.charAt(0)} {user?.last_name.charAt(0)}
                 </AvatarFallback>
               </Avatar>
               <VStack className="space-y-1">
                 <p className="text-sm text-primary font-semibold">
-                  Olivier Jones
+                  {`${user?.first_name} ${user?.last_name}`}
                 </p>
-                <p className="text-xs font-medium">olivierjones@gmail.com</p>
+                <p className="text-xs font-medium">{user?.email}</p>
               </VStack>
             </div>
           </div>

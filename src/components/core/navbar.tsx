@@ -14,10 +14,13 @@ import { Button } from "../ui/button";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { useDisclosure } from "@/lib/hooks/useDisclosure";
 import ProfileMenu from "./profile-menu";
+import { useUser } from "@/lib/hooks/useUser";
 
 const Navbar = () => {
   const location = useLocation();
   const openProfileMenu = useDisclosure();
+
+  const { user } = useUser();
 
   const navs = [
     {
@@ -61,9 +64,9 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="sticky z-10 w-full h-full bg-white top-0">
+    <header className="sticky z-10 w-full h-full top-0">
       <nav>
-        <HStack className="items-center justify-between rounded-[100px] border-2 border-white p-3 pl-5 bg-inherit shadow-sm">
+        <HStack className="items-center justify-between rounded-[100px] border-2 bg-white border-white p-3 pl-5 shadow-sm">
           <img
             src={MainstackLogo}
             alt="Mainstack Logo"
@@ -120,7 +123,8 @@ const Navbar = () => {
                       "linear-gradient(to bottom right, #5C6670 20%, #131316 70%)",
                   }}
                 >
-                  OJ
+                  {user?.first_name.charAt(0)}
+                  {user?.last_name.charAt(0)}
                 </AvatarFallback>
               </Avatar>
               <div className="relative">

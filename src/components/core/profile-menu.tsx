@@ -54,7 +54,8 @@ export default function ProfileMenu({ open, onClose }: Props) {
                       "linear-gradient(to bottom right, #5C6670 20%, #131316 70%)",
                   }}
                 >
-                  {user?.first_name.charAt(0)} {user?.last_name.charAt(0)}
+                  {user?.first_name.charAt(0)}
+                  {user?.last_name.charAt(0)}
                 </AvatarFallback>
               </Avatar>
               <VStack className="space-y-1">

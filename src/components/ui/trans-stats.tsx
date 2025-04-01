@@ -12,7 +12,7 @@ const TransStats = ({ label, value }: Props) => {
       <VStack className="space-y-4">
         <p className="text-sm font-medium leading-none">{label}</p>
         <p className="text-primary font-bold text-[28px] leading-none">
-          USD {value.toLocaleString()}.00
+          USD {value.toFixed(2).toLocaleString()}
         </p>
       </VStack>
       <Info size={15.83} className="text-[#888F95]" />

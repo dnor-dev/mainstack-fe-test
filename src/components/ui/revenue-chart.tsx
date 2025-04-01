@@ -8,18 +8,20 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { HStack } from "./stack";
+import { Transaction } from "@/lib/types/transaction.type";
 
-const data = [
-  { date: "Apr 1, 2022", value: 4 },
-  { date: "Apr 5, 2022", value: 30 },
-  { date: "Apr 10, 2022", value: 10 },
-  { date: "Apr 15, 2022", value: 40 },
-  { date: "Apr 20, 2022", value: 20 },
-  { date: "Apr 25, 2022", value: 50 },
-  { date: "Apr 30, 2022", value: 5 },
-];
+type Props = {
+  transactions: Transaction[];
+};
 
-const RevenueChart: FC = () => {
+const RevenueChart: FC<Props> = ({ transactions }) => {
+  const data = transactions
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    .map((transaction) => ({
+      date: transaction.date,
+      value: transaction.amount,
+    }));
+
   return (
     <>
       <ResponsiveContainer width="100%" height={320}>

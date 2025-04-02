@@ -36,7 +36,7 @@ export const filterTransactions = (
         transactionType.length > 0 &&
         !transactionType
           .map((type) => type.toLowerCase())
-          .includes(transaction?.metadata?.type)
+          .includes(transaction?.type)
       ) {
         return false;
       }

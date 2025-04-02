@@ -103,6 +103,12 @@ const Revenue: FC = () => {
           />
         </>
       )}
+
+      {!isLoading && !transactions.data && !wallet.data && (
+        <h1 className="text-primary font-bold text-2xl text-center py-20">
+          Oops! Something went wrong.
+        </h1>
+      )}
     </VStack>
   );
 };

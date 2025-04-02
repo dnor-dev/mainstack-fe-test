@@ -1,18 +1,35 @@
 import { VStack, HStack } from "../stack";
-import { useState } from "react";
 import DatePicker from "../date-picker";
+import { TransactionFilter } from "@/lib/types/transaction.type";
 
-const DateRange = () => {
-  const [dateRange1, setDateRange1] = useState(new Date());
-  const [dateRange2, setDateRange2] = useState(new Date());
+type Props = {
+  filter: TransactionFilter;
+  setFilter: (filter: TransactionFilter) => void;
+};
 
+const DateRange = ({ filter, setFilter }: Props) => {
   return (
     <VStack className="px-5 w-full space-y-2">
       <h3 className="text-primary font-semibold text-base">Date Range</h3>
       <HStack className="w-full space-x-3">
-        {/* First date range */}
-        <DatePicker date={dateRange1} setDate={setDateRange1} />
-        <DatePicker date={dateRange2} setDate={setDateRange2} />
+        <DatePicker
+          date={filter.dateRange.from}
+          setDate={(date) =>
+            setFilter({
+              ...filter,
+              dateRange: { ...filter.dateRange, from: date },
+            })
+          }
+        />
+        <DatePicker
+          date={filter.dateRange.to}
+          setDate={(date) =>
+            setFilter({
+              ...filter,
+              dateRange: { ...filter.dateRange, to: date },
+            })
+          }
+        />
       </HStack>
     </VStack>
   );

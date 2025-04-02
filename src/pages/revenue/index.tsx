@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { VStack, HStack } from "../../components/ui/stack";
 import { Button } from "@/components/ui/button";
 import TransStats from "@/components/ui/trans-stats";
@@ -9,8 +9,20 @@ import { QueryKeys } from "@/lib/constants/keys";
 import { getWallet } from "@/lib/api/wallet.api";
 import { getTransactions } from "@/lib/api/transaction.api";
 import LoadingSpinner from "@/components/ui/loading-spinner";
+import { Transaction, TransactionFilter } from "@/lib/types/transaction.type";
 
 const Revenue: FC = () => {
+  const [filterData, setFilterData] = useState<TransactionFilter>({
+    dateRange: {
+      from: undefined,
+      to: undefined,
+    },
+    transactionType: [],
+    transactionStatus: [],
+    dateTime: "",
+  });
+  const [data, setData] = useState<Transaction[]>([]);
+
   const [wallet, transactions] = useQueries({
     queries: [
       {
@@ -26,6 +38,12 @@ const Revenue: FC = () => {
 
   const isLoading = wallet.isLoading || transactions.isLoading;
 
+  useEffect(() => {
+    if (transactions.isSuccess && transactions.data) {
+      setData([...transactions.data.data]);
+    }
+  }, [transactions.isSuccess, transactions.data]);
+
   return (
     <VStack className="container mx-auto mt-16 space-y-14">
       {isLoading && (
@@ -34,7 +52,7 @@ const Revenue: FC = () => {
         </div>
       )}
 
-      {!isLoading && transactions.data && wallet.data && (
+      {!isLoading && transactions.data && wallet.data && data && (
         <>
           <HStack className="justify-between">
             <VStack className="h-[400px]">
@@ -53,7 +71,7 @@ const Revenue: FC = () => {
                 </Button>
               </HStack>
               <div className="w-[765.21px]">
-                <RevenueChart transactions={transactions.data.data} />
+                <RevenueChart transactions={data} />
               </div>
             </VStack>
             <VStack className="space-y-10 h-[400px]">
@@ -76,7 +94,13 @@ const Revenue: FC = () => {
             </VStack>
           </HStack>
 
-          <Transactions transactions={transactions.data.data} />
+          <Transactions
+            transactions={transactions.data.data}
+            filterData={filterData}
+            setFilterData={setFilterData}
+            data={data}
+            setData={setData}
+          />
         </>
       )}
     </VStack>

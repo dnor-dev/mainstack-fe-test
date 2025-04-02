@@ -15,3 +15,13 @@ export type Transaction = {
   type: "deposit" | "withdrawal";
   status: "pending" | "successful" | "failed";
 };
+
+export type TransactionFilter = {
+  dateRange: {
+    from: Date | undefined;
+    to: Date | undefined;
+  };
+  transactionType: string[];
+  transactionStatus: string[];
+  dateTime: string;
+};

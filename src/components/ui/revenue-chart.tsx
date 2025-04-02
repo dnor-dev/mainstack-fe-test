@@ -15,12 +15,19 @@ type Props = {
 };
 
 const RevenueChart: FC<Props> = ({ transactions }) => {
-  const data = transactions
+  let data = transactions
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     .map((transaction) => ({
       date: transaction.date,
       value: transaction.amount,
     }));
+
+  if (data.length === 0) {
+    data = [
+      { date: "N/A", value: -0.1 },
+      { date: "N/A", value: -0.1 },
+    ];
+  }
 
   return (
     <>
@@ -45,9 +52,9 @@ const RevenueChart: FC<Props> = ({ transactions }) => {
         </LineChart>
       </ResponsiveContainer>
       <HStack className="items-center justify-between space-x-16 relative -top-5">
-        <p className="text-sm text-[#56616B] font-medium">{data[0].date}</p>
+        <p className="text-sm text-[#56616B] font-medium">{data[0]?.date}</p>
         <p className="text-sm text-[#56616B] font-medium">
-          {data[data.length - 1].date}
+          {data[data?.length - 1]?.date}
         </p>
       </HStack>
     </>

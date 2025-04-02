@@ -9,6 +9,7 @@ import { Button } from "../button";
 import { ChevronDown } from "lucide-react";
 import { VStack } from "../stack";
 import { cn } from "@/lib/utils";
+import { TransactionFilter } from "@/lib/types/transaction.type";
 
 const options = [
   "Store Transactions",
@@ -19,16 +20,21 @@ const options = [
   "Refer & Earn",
 ];
 
-const TransactionType = () => {
-  const [selected, setSelected] = useState<string[]>(options);
+type Props = {
+  filter: TransactionFilter;
+  setFilter: (filter: TransactionFilter) => void;
+};
+
+const TransactionType = ({ filter, setFilter }: Props) => {
   const [open, setOpen] = useState(false);
 
   const toggleSelection = (value: string) => {
-    setSelected((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value]
-    );
+    setFilter({
+      ...filter,
+      transactionType: filter.transactionType.includes(value)
+        ? filter.transactionType.filter((item) => item !== value)
+        : [...filter.transactionType, value],
+    });
   };
 
   return (
@@ -45,8 +51,8 @@ const TransactionType = () => {
             onClick={() => setOpen(!open)}
           >
             <p className="w-full overflow-auto no-scrollbar">
-              {selected.length > 0
-                ? selected.join(", ")
+              {filter.transactionType.length > 0
+                ? filter.transactionType.join(", ")
                 : "Select transaction type"}
             </p>
             <ChevronDown
@@ -66,7 +72,7 @@ const TransactionType = () => {
               className="flex items-center space-x-3 cursor-pointer"
             >
               <Checkbox
-                checked={selected.includes(option)}
+                checked={filter.transactionType.includes(option)}
                 onCheckedChange={() => toggleSelection(option)}
               />
               <span className="text-primary font-semibold text-base">

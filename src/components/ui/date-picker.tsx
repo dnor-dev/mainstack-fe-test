@@ -10,7 +10,7 @@ const DatePicker = ({
   date,
   setDate,
 }: {
-  date: Date;
+  date: Date | undefined;
   setDate: (date: Date) => void;
 }) => {
   const [open, setOpen] = useState(false);

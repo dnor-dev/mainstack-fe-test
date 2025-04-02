@@ -14,7 +14,7 @@ import { TransactionFilter } from "@/lib/types/transaction.type";
 const options = [
   "Store Transactions",
   "Get Tipped",
-  "Withdrawals",
+  "Withdrawal",
   "Chargebacks",
   "Cashbacks",
   "Refer & Earn",

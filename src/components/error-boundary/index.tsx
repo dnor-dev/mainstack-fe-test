@@ -14,7 +14,7 @@ class ErrorBoundary extends Component<Props, State> {
     hasError: false,
   };
 
-  public static getDerivedStateFromError(_: Error): State {
+  public static getDerivedStateFromError(): State {
     return { hasError: true };
   }
 
@@ -26,9 +26,9 @@ class ErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         <div className="flex flex-col items-center justify-center h-screen w-full">
-          <h1>Something went wrong.</h1>
+          <h1 className="font-semibold text-xl">Something went wrong.</h1>
           <Button
-            className="mt-5 bg-primary text-white px-4 py-2 rounded-md"
+            className="mt-3 bg-primary text-white px-4 py-2 rounded-md"
             onClick={() => window.location.reload()}
           >
             Reload

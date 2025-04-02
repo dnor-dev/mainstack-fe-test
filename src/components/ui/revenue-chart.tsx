@@ -36,7 +36,7 @@ const RevenueChart: FC<Props> = ({ transactions }) => {
           <XAxis
             dataKey="date"
             tick={{ fontSize: 14, fill: "#56616B", fontWeight: 500 }}
-            tickFormatter={(_) => ""}
+            tickFormatter={() => ""}
             axisLine={{ stroke: "#DBDEE5" }}
             tickLine={false}
           />
